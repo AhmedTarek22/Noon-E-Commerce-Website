@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+  .second {
+    height: auto;
+  }
+
+  .box {
+    height: auto;
+  }
+
+  .box img {
+    height: auto;
+  }
+}
+h2 {
+  font-size: 23px !important;
+  font-weight: bold;
+}
