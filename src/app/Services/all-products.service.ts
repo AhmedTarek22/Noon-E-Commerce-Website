@@ -46,7 +46,7 @@ export class AllProductsService {
   private productsSubCategory = new BehaviorSubject<[]>([]);
   private searchValue = new BehaviorSubject<string>('');
 
-  api: string = 'http://localhost:4000/getallproduct';
+  api: string = 'https://noon-e-commerce-server-two.vercel.app/getallproduct';
   allProducts = new BehaviorSubject([]);
 
   constructor(public http: HttpClient) {
@@ -61,7 +61,7 @@ export class AllProductsService {
 
   fetchAllSubCategory(): Observable<[]> {
     return this.http
-      .get<[]>('http://localhost:4000/getallsubcategories')
+      .get<[]>('https://noon-e-commerce-server-two.vercel.app/getallsubcategories')
       .pipe(tap((subcategories) => this.allSubCategory.next(subcategories)));
   }
 
@@ -72,7 +72,7 @@ export class AllProductsService {
   fetctProductsSubCategory(subCategoryId: any): Observable<[]> {
     return this.http
       .get<[]>(
-        `http://localhost:4000/getallproduct/?subCategoryId=${subCategoryId}`
+        `https://noon-e-commerce-server-two.vercel.app/getallproduct/?subCategoryId=${subCategoryId}`
       )
       .pipe(tap((products) => this.productsSubCategory.next(products)));
   }
@@ -83,7 +83,7 @@ export class AllProductsService {
 
   fetctProductsSubCategoryBySearch(searchItem: string): Observable<[]> {
     return this.http
-      .get<[]>(`http://localhost:4000/getallproduct/?keyword=${searchItem}`)
+      .get<[]>(`https://noon-e-commerce-server-two.vercel.app/getallproduct/?keyword=${searchItem}`)
       .pipe(tap((products) => this.productsSubCategory.next(products)));
   }
 
@@ -93,7 +93,7 @@ export class AllProductsService {
       .set('limit', limit.toString());
 
     return this.http
-      .get<any>('http://localhost:4000/getallproduct', { params })
+      .get<any>('https://noon-e-commerce-server-two.vercel.app/getallproduct', { params })
       .pipe(
         tap((response) => {
           this.productsSubCategory.next(response.products); // تحديث الـ BehaviorSubject بالمنتجات الجديدة

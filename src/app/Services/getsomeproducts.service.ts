@@ -13,7 +13,7 @@ export class GetsomeproductsService {
     subCategoryName: string;
   }): Observable<ISomeProducts> {
     return this.http.post<ISomeProducts>(
-      'http://localhost:4000/getsomeproducts',
+      'https://noon-e-commerce-server-two.vercel.app/getsomeproducts',
       subCategory
     );
   }
