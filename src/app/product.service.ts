@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:4000/getproduct';
+  private baseUrl = 'https://noon-e-commerce-server-two.vercel.app/getproduct';
 
   constructor(private http: HttpClient) {}
 

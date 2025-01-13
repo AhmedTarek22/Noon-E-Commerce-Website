@@ -37,7 +37,7 @@ export class CartService {
 
   // وظيفة لإضافة عنصر إلى السلة
   addToCart(productId: string, quantity: number = 1): Observable<any> {
-    return this.http.post('http://localhost:4000/addtocart', {
+    return this.http.post('https://noon-e-commerce-server-two.vercel.app/addtocart', {
       productId,
       quantity,
     });
@@ -45,14 +45,14 @@ export class CartService {
 
   // جلب عدد العناصر من الخادم وإعادته كـ Observable
   fetchCartCount(): Observable<number> {
-    return this.http.get<number>('http://localhost:4000/cart-count').pipe(
+    return this.http.get<number>('https://noon-e-commerce-server-two.vercel.app/cart-count').pipe(
       tap((count) => this.updateCartCount(count)) // Update cart count
     );
   }
 
   // Fetch cart products from the server
   fetchCartProducts(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:4000/getcartitems').pipe(
+    return this.http.get<any[]>('https://noon-e-commerce-server-two.vercel.app/getcartitems').pipe(
       tap((products) => this.updateCartProducts(products))
     );
   }
@@ -72,7 +72,7 @@ export class CartService {
   }
 
   removeFromCart(productId: string): Observable<any> {
-    return this.http.delete(`http://localhost:4000/removefromcart/${productId}`).pipe(
+    return this.http.delete(`https://noon-e-commerce-server-two.vercel.app/removefromcart/${productId}`).pipe(
       tap(() => {
         this.fetchCartCount().subscribe();
         this.fetchCartProducts().subscribe();
@@ -91,7 +91,7 @@ export class CartService {
   // }
 
   updateProductQuantity(productId: string, quantity: number): Observable<any> {
-    return this.http.put(`http://localhost:4000/updatecart`, { productId, quantity }).pipe(
+    return this.http.put(`https://noon-e-commerce-server-two.vercel.app/updatecart`, { productId, quantity }).pipe(
       tap(() => {
         this.fetchCartCount().subscribe();
         this.fetchCartProducts().subscribe();
